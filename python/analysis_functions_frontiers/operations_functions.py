@@ -105,7 +105,7 @@ def filter_raw(name, save_dir, lowpass, overwrite):
         raw = io.read_maxfiltered(name, save_dir)
         raw.filter(None, lowpass)
         
-        filter_name = name  + filter_string(lowpass) + '-raw.fif'
+        filter_name = name + filter_string(lowpass) + '-raw.fif'
         filter_path = join(save_dir, filter_name)
         raw.save(filter_path, overwrite=True)
         

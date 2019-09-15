@@ -3,6 +3,8 @@
 Created on Wed April  19 17:30 201
 
 @author: lau
+
+Modified by egorananyev 2019-08-31
 """
 
 #==============================================================================
@@ -10,19 +12,22 @@ Created on Wed April  19 17:30 201
 #%%============================================================================
 
 home_path = '/home/brain/host/' ## change this according to needs
+                                ## changed to the NeuroDebian default
 
 #==============================================================================
 # IMPORTS 
 #%%============================================================================
 
 from os.path import join
-from os import chdir
+from analysis_functions_frontiers import operations_functions as operations
+from analysis_functions_frontiers import io_functions as io
+from analysis_functions_frontiers import plot_functions as plot
 project_name = 'meg_tutorial/'
-script_path = home_path + project_name + 'scripts/python/analysis_functions_frontiers/'
-chdir(script_path)
-import operations_functions as operations
-import io_functions as io
-import plot_functions as plot
+# from os import chdir
+# from os import getcwd
+# script_path = home_path + project_name + 'scripts/python/analysis_functions_frontiers/'
+# chdir(script_path)
+# print(getcwd())
 
 #==============================================================================
 # PATHS 
@@ -36,10 +41,10 @@ figures_path = join(home_path, project_name, 'figures/')
 
 subjects = [
                          'sub-01',
-                         'sub-02',
-                         'sub-03',
-                         'sub-04',
-                         'sub-05'  #,
+                         'sub-02'  #,
+                         # 'sub-03',
+                         # 'sub-04',
+                         # 'sub-05'  #,
                          # 'sub-06',
                          # 'sub-07',
                          # 'sub-08',
@@ -66,12 +71,12 @@ operations_to_apply = dict(
 
                     ## OS commands
 
-                    populate_data_directory=1,
+                    populate_data_directory=0,
                     
                     ## WITHIN SUBJECT                    
                     
                     ## sensor space operations
-                    filter_raw=0,
+                    filter_raw=1,  # reads in the data & low-pass filters them
                     find_events=0,
                     epoch_raw=0,
                     run_ica=0,
@@ -94,9 +99,9 @@ operations_to_apply = dict(
                     ## PLOTTING                    
                     
                     ## plotting sensor space (within subject)
-                    plot_maxfiltered=0,
-                    plot_filtered=0,
-                    plot_power_spectra=0,
+                    plot_maxfiltered=1,
+                    plot_filtered=1,
+                    plot_power_spectra=1,
                     plot_ica=0,
                     plot_epochs_image=0,
                     plot_evokeds=0,
@@ -135,24 +140,24 @@ lowpass = 70 ## Hz
 bad_channels_dict = dict()
 bad_channels_dict[subjects[0]] = []
 bad_channels_dict[subjects[1]] = []
-bad_channels_dict[subjects[2]] = []
-bad_channels_dict[subjects[3]] = []
-bad_channels_dict[subjects[4]] = []
-bad_channels_dict[subjects[5]] = []
-bad_channels_dict[subjects[6]] = ['MEG0111', 'MEG0121']
-bad_channels_dict[subjects[7]] = ['MEG1411', 'MEG1421', 'MEG2121']
-bad_channels_dict[subjects[8]] = ['MEG1531', 'MEG1541', 'MEG1711', 'MEG0141']
-bad_channels_dict[subjects[9]] = []
-bad_channels_dict[subjects[10]] = []
-bad_channels_dict[subjects[11]] = []
-bad_channels_dict[subjects[12]] = ['MEG0111', 'MEG0121']
-bad_channels_dict[subjects[13]] = ['MEG0111', 'MEG0121', 'MEG0141']
-bad_channels_dict[subjects[14]] = []
-bad_channels_dict[subjects[15]] = []
-bad_channels_dict[subjects[16]] = ['MEG0111', 'MEG0121']
-bad_channels_dict[subjects[17]] = []
-bad_channels_dict[subjects[18]] = []
-bad_channels_dict[subjects[19]] = []
+# bad_channels_dict[subjects[2]] = []
+# bad_channels_dict[subjects[3]] = []
+# bad_channels_dict[subjects[4]] = []
+# bad_channels_dict[subjects[5]] = []
+# bad_channels_dict[subjects[6]] = ['MEG0111', 'MEG0121']
+# bad_channels_dict[subjects[7]] = ['MEG1411', 'MEG1421', 'MEG2121']
+# bad_channels_dict[subjects[8]] = ['MEG1531', 'MEG1541', 'MEG1711', 'MEG0141']
+# bad_channels_dict[subjects[9]] = []
+# bad_channels_dict[subjects[10]] = []
+# bad_channels_dict[subjects[11]] = []
+# bad_channels_dict[subjects[12]] = ['MEG0111', 'MEG0121']
+# bad_channels_dict[subjects[13]] = ['MEG0111', 'MEG0121', 'MEG0141']
+# bad_channels_dict[subjects[14]] = []
+# bad_channels_dict[subjects[15]] = []
+# bad_channels_dict[subjects[16]] = ['MEG0111', 'MEG0121']
+# bad_channels_dict[subjects[17]] = []
+# bad_channels_dict[subjects[18]] = []
+# bad_channels_dict[subjects[19]] = []
 
 ## events
 adjust_timeline_by_msec = 41 ## delay to stimulus            
