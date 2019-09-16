@@ -22,6 +22,8 @@ from os.path import join
 from analysis_functions_frontiers import operations_functions as operations
 from analysis_functions_frontiers import io_functions as io
 from analysis_functions_frontiers import plot_functions as plot
+import warnings  # EA added 2019-09-16
+warnings.simplefilter("ignore", DeprecationWarning)  # EA: added 2019-09-16
 project_name = 'meg_tutorial/'
 # from os import chdir
 # from os import getcwd
@@ -76,7 +78,7 @@ operations_to_apply = dict(
                     ## WITHIN SUBJECT                    
                     
                     ## sensor space operations
-                    filter_raw=1,  # reads in the data & low-pass filters them
+                    filter_raw=0,  # reads in the data & low-pass filters them
                     find_events=0,
                     epoch_raw=0,
                     run_ica=0,
@@ -99,8 +101,8 @@ operations_to_apply = dict(
                     ## PLOTTING                    
                     
                     ## plotting sensor space (within subject)
-                    plot_maxfiltered=1,
-                    plot_filtered=1,
+                    plot_maxfiltered=0,
+                    plot_filtered=0,
                     plot_power_spectra=1,
                     plot_ica=0,
                     plot_epochs_image=0,
