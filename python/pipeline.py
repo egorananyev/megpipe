@@ -101,10 +101,10 @@ operations_to_apply = dict(
                     ## PLOTTING                    
                     
                     ## plotting sensor space (within subject)
-                    plot_maxfiltered=1,
-                    plot_filtered=1,
+                    plot_maxfiltered=0,
+                    plot_filtered=0,
                     plot_power_spectra=0,
-                    plot_ica=0,
+                    plot_ica=1,
                     plot_epochs_image=0,
                     plot_evokeds=0,
                     plot_butterfly_evokeds=0,

@@ -11,7 +11,7 @@ from os import chdir
 #script_path = '/home/lau/analyses/omission_frontiers_BIDS-MNE-Python' + \
 #        '/scripts/python/analysis_functions_frontiers/'
 #script_path = '/home/brain/host/meg_tutorial/scripts/python/analysis_functions_frontiers/'
-script_path = '/mnt/d/meg/tutorial/scripts/python/analysis_functions_frontiers/'
+script_path = '/mnt/c/Users/egora/Dropbox/Projects/eb/meg/scripts/python/analysis_functions_frontiers/'
 chdir(script_path)
 import io_functions as io
 import numpy as np
@@ -40,7 +40,8 @@ def plot_power_spectra(name, save_dir, lowpass, subject, save_plots,
                         figures_path):
     
     raw = io.read_filtered(name, save_dir, lowpass)
-    psd_figure = raw.plot_psd(fmax=lowpass, n_jobs=-1)
+    psd_figure = raw.plot_psd(fmax=lowpass, n_jobs=1, show=False)  # n_jobs=-1)
+    print('finished building the figure')
     
     if save_plots:
         save_path = join(figures_path, subject, 'power_spectra_raw', name + \
@@ -54,7 +55,7 @@ def plot_power_spectra(name, save_dir, lowpass, subject, save_plots,
 def plot_ica(name, save_dir, lowpass, subject, save_plots, figures_path):
     
     ica = io.read_ica(name, save_dir, lowpass)
-    ica_figure = ica.plot_components(ica.exclude)
+    ica_figure = ica.plot_components(ica.exclude, show=False)
     
     if save_plots:
         save_path = join(figures_path, subject, 'ica', name + \

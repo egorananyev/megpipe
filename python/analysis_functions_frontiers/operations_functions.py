@@ -8,8 +8,8 @@ import numpy as np
 from os.path import join, isfile
 from scipy import stats
 from os import chdir, makedirs
-script_path = '/mnt/d/meg/tutorial' + \
-        '/scripts/python/analysis_functions_frontiers/'
+script_path = '/mnt/c/Users/egora/Dropbox/Projects/eb/meg/' + \
+        'scripts/python/analysis_functions_frontiers/'
 chdir(script_path)
 import io_functions as io
 import pickle
