@@ -41,7 +41,6 @@ def plot_power_spectra(name, save_dir, lowpass, subject, save_plots,
     
     raw = io.read_filtered(name, save_dir, lowpass)
     psd_figure = raw.plot_psd(fmax=lowpass, n_jobs=1, show=False)  # n_jobs=-1)
-    print('finished building the figure')
     
     if save_plots:
         save_path = join(figures_path, subject, 'power_spectra_raw', name + \
@@ -73,7 +72,7 @@ def plot_epochs_image(name, save_dir, lowpass, subject, save_plots,
     epochs = io.read_epochs(name, save_dir, lowpass)
     picks = mne.pick_channels(epochs.info['ch_names'], [channel])
     for trial_type in epochs.event_id:
-        epochs_image = mne.viz.plot_epochs_image(epochs[trial_type], picks)
+        epochs_image = mne.viz.plot_epochs_image(epochs[trial_type], picks, show=False)
         plt.title(trial_type)
 
         if save_plots:
@@ -114,13 +113,13 @@ def plot_evokeds(name, save_dir, lowpass, subject, save_plots, figures_path):
     
     plt.close('all')
     
-    evoked_figure = mne.viz.plot_evoked_topo(plot_evokeds, color=colours)
+    evoked_figure = mne.viz.plot_evoked_topo(plot_evokeds, color=colours, show=False)
     evoked_figure.comment = 'all_evokeds_'                                           
     standards_figure = mne.viz.plot_evoked_topo(plot_standards,
-                                                color=colours[:5] + colours[8:9])                                         
+                                                color=colours[:5] + colours[8:9], show=False)                                         
     standards_figure.comment = 'standards_evokeds_'                                                
     omissions_figure = mne.viz.plot_evoked_topo(plot_omissions,
-                                                color=colours[5:9])
+                                                color=colours[5:9], show=False)
     omissions_figure.comment = 'omissions_evokeds_'                                                
                                                 
     figures = [evoked_figure, standards_figure, omissions_figure]
@@ -142,7 +141,7 @@ def plot_butterfly_evokeds(name, save_dir, lowpass, subject, save_plots,
 
     evokeds = io.read_evokeds(name, save_dir, lowpass)
     for evoked in evokeds:
-        figure = evoked.plot()
+        figure = evoked.plot(show=False)
 
         if save_plots:
             save_path = join(figures_path, subject, 'evokeds', 
@@ -280,13 +279,13 @@ def plot_grand_average_evokeds(name, lowpass, save_dir_averages,
     
     plt.close('all')
     
-    evoked_figure = mne.viz.plot_evoked_topo(plot_evokeds, color=colours)
+    evoked_figure = mne.viz.plot_evoked_topo(plot_evokeds, color=colours, show=False)
     evoked_figure.comment = 'all_evokeds_'                                           
     standards_figure = mne.viz.plot_evoked_topo(plot_standards,
-                                                color=colours[:5] + colours[8:9])                                         
+                                                color=colours[:5] + colours[8:9], show=False)                                         
     standards_figure.comment = 'standards_evokeds_'                                                
     omissions_figure = mne.viz.plot_evoked_topo(plot_omissions,
-                                                color=colours[5:9])
+                                                color=colours[5:9], show=False)
     omissions_figure.comment = 'omissions_evokeds_'  
                                                 
     figures = [evoked_figure, standards_figure, omissions_figure]
@@ -320,7 +319,7 @@ def plot_grand_averages_butterfly_evokeds(name, lowpass, save_dir_averages,
         grand_averages.append(evoked)                                                                    
 
     for grand_average in grand_averages:
-        figure = grand_average.plot()
+        figure = grand_average.plot(show=False)
 
         if save_plots:
             save_path = join(figures_path, 'grand_averages', 'sensor_space',
