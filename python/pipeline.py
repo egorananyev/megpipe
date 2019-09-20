@@ -11,8 +11,8 @@ Modified by egorananyev 2019-08-31
 # SET HOME PATH
 #%%============================================================================
 
-home_path = '/home/brain/host/' ## change this according to needs
-                                ## changed to the NeuroDebian default
+home_path = '/mnt/d/meg/' ## change this according to needs
+                               ## changed to the NeuroDebian default
 
 #==============================================================================
 # IMPORTS 
@@ -24,7 +24,7 @@ from analysis_functions_frontiers import io_functions as io
 from analysis_functions_frontiers import plot_functions as plot
 import warnings  # EA added 2019-09-16
 warnings.simplefilter("ignore", DeprecationWarning)  # EA: added 2019-09-16
-project_name = 'meg_tutorial/'
+project_name = 'tutorial/'
 # from os import chdir
 # from os import getcwd
 # script_path = home_path + project_name + 'scripts/python/analysis_functions_frontiers/'
@@ -101,9 +101,9 @@ operations_to_apply = dict(
                     ## PLOTTING                    
                     
                     ## plotting sensor space (within subject)
-                    plot_maxfiltered=0,
-                    plot_filtered=0,
-                    plot_power_spectra=1,
+                    plot_maxfiltered=1,
+                    plot_filtered=1,
+                    plot_power_spectra=0,
                     plot_ica=0,
                     plot_epochs_image=0,
                     plot_evokeds=0,

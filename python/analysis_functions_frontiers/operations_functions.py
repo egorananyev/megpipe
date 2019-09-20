@@ -8,7 +8,7 @@ import numpy as np
 from os.path import join, isfile
 from scipy import stats
 from os import chdir, makedirs
-script_path = '/home/brain/host/meg_tutorial' + \
+script_path = '/mnt/d/meg/tutorial' + \
         '/scripts/python/analysis_functions_frontiers/'
 chdir(script_path)
 import io_functions as io

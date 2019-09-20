@@ -10,7 +10,8 @@ import mayavi.mlab
 from os import chdir
 #script_path = '/home/lau/analyses/omission_frontiers_BIDS-MNE-Python' + \
 #        '/scripts/python/analysis_functions_frontiers/'
-script_path = '/home/brain/host/meg_tutorial/scripts/python/analysis_functions_frontiers/'
+#script_path = '/home/brain/host/meg_tutorial/scripts/python/analysis_functions_frontiers/'
+script_path = '/mnt/d/meg/tutorial/scripts/python/analysis_functions_frontiers/'
 chdir(script_path)
 import io_functions as io
 import numpy as np
